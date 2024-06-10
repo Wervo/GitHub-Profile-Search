@@ -1,17 +1,21 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Header from './components/Header'; 
 import SearchBar from "./components/SearchBar";
 import Profile from "./components/Profile";
-import Main from "./Main";
+import Main from "./components/Main";
+import "./index.css";
 
 function App() {
     const [userData, setUserData] = useState(null);
+    const [repos, setRepos] = useState([]);
+    const [username, setUsername] = useState("");
+
     return (
-        <div className="App">
+           <div className="App">
             <Header />
-            <SearchBar setUserData={setUserData} />
+            <SearchBar setUserData={setUserData} setRepos={setRepos} setUsername={setUsername} />
             <Profile userData={userData} />
-            <Main />
+            <Main repos={repos} username={userData ? userData.login : null} />
         </div>
     );
 }

@@ -6,6 +6,11 @@
   font-family: "Be Vietnam Pro", sans-serif;
 }
 
+html {
+  scrollbar-width: thin; 
+  scrollbar-color: #364153 #111729;
+}
+
 body{
   background-color: #20293A;
   display:flex;
@@ -35,6 +40,7 @@ body{
   border:none;
   background-color: #20293A;
   border-radius:10px;
+  color:#CDD5E0;
 }
 
 .search-input::placeholder{
@@ -59,10 +65,12 @@ body{
   width:100%;
   display:none;
   cursor: pointer;
+  transition: 0.3s ease-in-out;
+  border: 2px solid transparent;
 }
 
 .profile-search.visible {
-  display: flex; /* Show when it has the 'visible' class */
+  display: flex;
 }
 
 .container-search{
@@ -115,6 +123,8 @@ body{
 .bio{
   display:flex;
   flex-direction: column;
+  max-width: 270px;
+  flex-wrap: wrap;
 }
 
 .bio h3{
@@ -156,86 +166,100 @@ color:#364153;
   flex-shrink: 0; 
 }
 
-.container-main{
-  display:flex;
-  flex-direction: column;
-  gap:1rem;
-  
-}
-
-.first-row-container, .second-row-container{
-  display:flex;
-  justify-content: center;
-  gap:1rem;
-}
-
-.first-container{
-  background: linear-gradient(to right, #111729, #1D1B48);
-  width:100%;
-  height:100%;
-  padding: 15px;
-  border-radius: 10px;
+.container-main {
   display: flex;
   flex-direction: column;
-  gap: 1.3rem;
+  margin:0 auto;
+  gap: 1.25rem; 
+  width: 60%;
 }
 
- .second-container, .third-container, .fourth-container{
-  background: linear-gradient(to right, #111729, #1D1B48);
-  width:29%;
-  padding: 15px;
-  border-radius: 10px;
+.row-container {
   display: flex;
-  flex-direction: column;
-  gap: 0.7rem;
+  justify-content: space-between;
+  gap: 1.25rem; 
 }
 
-.first-container h3, .second-container h3, .third-container h3, .fourth-container h3{
+.container {
+  flex: 1;
+  background: linear-gradient(to right, #111729, #1D1B48);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+a{
+  text-decoration: none;
+  flex: 1;
+}
+
+.container img {
+  width: 20px; 
+  height: 20px; 
+  margin-right: 10px; 
+}
+
+.container h3 {
+  margin-top: 0;
+  margin-bottom: 10px; 
   color:#CDD5E0;
 }
 
-.first-container p, .second-container p, .third-container p, .fourth-container p{
+.container p {
+  margin: 0;
   color:#677c9e;
 }
 
-.first-container span, .second-container span, .third-container span, .fourth-container span{
+.container span{
   color:#677c9e;
 }
 
-.container-stats{
-  display:flex;
+.container-stats {
+  display: flex;
   align-items: center;
   gap:1rem;
+  margin-top: 10px; 
   font-weight: 600;
 }
 
-.nesting{
-  display:flex;
+.nesting, .star, .MIT {
+  display: flex;
   align-items: center;
 }
 
-.star{
-  display:flex;
-  align-items: center;
+.update {
+  margin-top: 10px;
+  font-size: 0.8em;
+  color: #888;
+  margin:0 auto;
 }
 
-.update{
-  display:flex;
-  align-items: center;
-  font-size: 0.75rem;
-}
-
-.MIT{
-  display:flex;
-  align-items: center;
-}
-
-.respositories{
-  display:flex;
+.repositories a{
   justify-content: center;
-  margin-top:20px;
+  display:flex;
+  padding:20px 0;
   color:#677c9e;
+  cursor: pointer;
+  text-decoration: none;
+  width:25%;
+  margin: 0 auto;
 }
+
+.profile-search:hover{
+  border: 2px solid #2c296d;
+}
+
+.container:hover{
+  box-shadow: 0 0 10px #2c296d, 0 0 20px #2c296d, 0 0 30px #2c296d, 0 0 40px #2c296d;
+  cursor: pointer;
+}
+
+.repositories a:hover{
+  color:#CDD5E0;
+  transition: 0.3s ease-in-out;
+}
+
 
 @media(max-width:1441px){
   .second-container, .third-container, .fourth-container{
@@ -245,8 +269,13 @@ color:#364153;
 
 @media(max-width:1025px){
   .search-bar{
+    top:35px;
     left:340px;
     width:40%;
+  }
+
+  .profile-search{
+    top:60px;
   }
 
   .profile-container{
@@ -264,17 +293,17 @@ color:#364153;
     display:flex;
     flex-direction: column;
     gap:1rem;
-    
+    width:70%;
   }
   
-  .first-row-container, .second-row-container{
+  .row-container{
     display:flex;
     justify-content: center;
     gap:1rem;
     align-items: center;
   }
 
-  .first-container{
+  .container{
     background: linear-gradient(to right, #111729, #1D1B48);
     width:100%;
     padding: 15px;
@@ -284,31 +313,35 @@ color:#364153;
     gap: 1.3rem;
   }
 
-  .second-container{
-    background: linear-gradient(to right, #111729, #1D1B48);
-    width:43%;
-    padding: 15px;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 0.7rem;
-  }
-  
-   .third-container, .fourth-container{
-    background: linear-gradient(to right, #111729, #1D1B48);
-    width:43%;
-    padding: 15px;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 0.7rem;
+  .update {
+    font-size: 0.6em;
   }
 }
 
 @media(max-width:769px){
   .search-bar{
+    top:20px;
     left:220px;
     width:50%;
+  }
+
+  .profile-search{
+    top:60px;
+    width:100%;
+    max-height:60px;
+    border-radius: 10px;
+  }
+
+  .container-search img{
+    width: 10%;
+  }
+
+  .container-info span{
+    font-size: 0.8rem;
+  }
+  
+  .container-info p{
+    font-size: 0.6rem;
   }
 
   .profile-container{
@@ -316,18 +349,25 @@ color:#364153;
     justify-content: center;
     align-items: center;
     transform: translateY(-40px);
+    gap:3rem;
+    max-width:650px;
+    margin:0 auto;
   }
 
   .profileImg{
-    width: 120px;
+    width: 100px;
   }
 
   .bio h3{
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
   
   .bio span{
-    font-size: 0.8rem;
+    font-size: 0.7rem;
+  }
+
+  .profile-info{
+    max-height:45px;
   }
 
   .profile-info .followers, .following, .location{
@@ -347,65 +387,52 @@ color:#364153;
     display:flex;
     flex-direction: column;
     gap:1rem;
+    width:80%;
   }
   
-  .first-row-container, .second-row-container{
+  .row-container{
     display:flex;
     justify-content: center;
     gap:1rem;
     align-items: center;
   }
 
-  .first-container{
+  .container{
     background: linear-gradient(to right, #111729, #1D1B48);
     width:100%;
     padding: 15px;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    gap: 0.7rem;
-    max-width:330px;
+    gap: 1.3rem;
   }
 
-  .second-container{
-    background: linear-gradient(to right, #111729, #1D1B48);
-    width:43%;
-    padding: 15px;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 0.7rem;
-    max-width:360px;
-  }
-  
-   .third-container, .fourth-container{
-    background: linear-gradient(to right, #111729, #1D1B48);
-    width:43%;
-    padding: 15px;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 0.7rem;
+  .container-stats{
+    gap:0.4rem;
   }
 
-  .first-container h3, .second-container h3, .third-container h3, .fourth-container h3{
-    font-size: 1rem;
-  }
-  
-  .first-container p, .second-container p, .third-container p, .fourth-container p{
+  .nesting span{
     font-size: 0.8rem;
   }
-  
-  .first-container span, .second-container span, .third-container span, .fourth-container span{
+
+  .star p{
     font-size: 0.8rem;
   }
 
   .update span{
-    font-size: 0.6rem;
+    font-size: 0.9em;
+  }
+
+  .MIT{
+    font-size: 0.8rem;
   }
 
   .respositories{
     font-size: 0.8rem;
+  }
+
+  .repositories a{
+    width:60%;
   }
 }
 
@@ -416,9 +443,28 @@ color:#364153;
   }
 
   .search-bar{
-    top:20px;
+    top:10px;
     left:100px;
     width:60%;
+  }
+
+  .profile-search{
+    top:60px;
+    width:100%;
+    max-height:60px;
+    border-radius: 10px;
+  }
+
+  .container-search img{
+    width: 20%;
+  }
+
+  .container-info span{
+    font-size: 0.7rem;
+  }
+  
+  .container-info p{
+    font-size: 0.5rem;
   }
 
   .profile-container{
@@ -426,7 +472,8 @@ color:#364153;
     justify-content: center;
     align-items: center;
     transform: translateY(-20px);
-
+    margin:0 auto;
+    max-width:375px;
   }
 
   .profileImg{
@@ -452,11 +499,11 @@ color:#364153;
   }
   
   .bio span{
-    font-size: 0.8rem;
+    font-size: 0.7rem;
   }
 
   .profile-info .followers, .following, .location{
-    padding:5px;
+    padding:5px 25px;
     border-radius: 10px;
     width:90%;
   }
@@ -477,7 +524,7 @@ color:#364153;
     align-items: center;
   }
   
-  .first-row-container, .second-row-container{
+  .row-container{
     display:flex;
     flex-direction: column;
     justify-content: center;
@@ -485,7 +532,7 @@ color:#364153;
     align-items: center;
   }
 
-  .first-container{
+  .container{
     background: linear-gradient(to right, #111729, #1D1B48);
     width:100%;
     padding: 15px;
@@ -496,37 +543,15 @@ color:#364153;
     min-width:350px;
   }
 
-  .second-container{
-    background: linear-gradient(to right, #111729, #1D1B48);
-    width:100%;
-    padding: 15px;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 0.7rem;
-    max-width:350px;
-  }
-  
-   .third-container, .fourth-container{
-    background: linear-gradient(to right, #111729, #1D1B48);
-    width:100%;
-    padding: 15px;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 0.7rem;
-    min-width:350px;
-  }
-
-  .first-container h3, .second-container h3, .third-container h3, .fourth-container h3{
+  .container h3{
     font-size: 1rem;
   }
   
-  .first-container p, .second-container p, .third-container p, .fourth-container p{
+  .container p{
     font-size: 0.8rem;
   }
   
-  .first-container span, .second-container span, .third-container span, .fourth-container span{
+  .container span{
     font-size: 0.8rem;
   }
 
@@ -537,17 +562,39 @@ color:#364153;
   .respositories{
     font-size: 0.8rem;
   }
+
+  .repositories a{
+    width:100%;
+  }
 }
 
 @media(max-width:321px){
   .heroimage{
     width:104%;
     height:150px;
-    
   }
 
   .search-bar{
     left:80px;
+  }
+
+  .profile-search{
+    top:60px;
+    width:100%;
+    max-height:60px;
+    border-radius: 10px;
+  }
+
+  .container-search img{
+    width: 20%;
+  }
+
+  .container-info span{
+    font-size: 0.6rem;
+  }
+  
+  .container-info p{
+    font-size: 0.435rem;
   }
 
   .profile-container{
@@ -555,7 +602,7 @@ color:#364153;
     justify-content: center;
     align-items: center;
     transform: translateY(-20px);
-
+    margin:0 auto;
   }
 
   .profileImg{
@@ -596,7 +643,7 @@ color:#364153;
     transform: translatex(5px);
   }
   
-  .first-row-container, .second-row-container{
+  .row-container{
     display:flex;
     flex-direction: column;
     justify-content: center;
@@ -604,7 +651,7 @@ color:#364153;
     align-items: center;
   }
 
-  .first-container{
+  .container{
     background: linear-gradient(to right, #111729, #1D1B48);
     width:100%;
     padding: 15px;
@@ -613,28 +660,6 @@ color:#364153;
     flex-direction: column;
     gap: 0.7rem;
     min-width:300px;
-  }
-
-  .second-container{
-    background: linear-gradient(to right, #111729, #1D1B48);
-    width:100%;
-    padding: 15px;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 0.7rem;
-    max-width:350px;
-  }
-  
-   .third-container, .fourth-container{
-    background: linear-gradient(to right, #111729, #1D1B48);
-    width:10%;
-    padding: 15px;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 0.7rem;
-    min-width:320px;
   }
 
   .respositories{

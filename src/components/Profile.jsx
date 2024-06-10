@@ -70,7 +70,5 @@ export default function Profile({ userData }) {
 </div>
 </div>
     </div>
-
   );
 }
-      
