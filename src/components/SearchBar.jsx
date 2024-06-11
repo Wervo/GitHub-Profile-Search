@@ -35,11 +35,14 @@ export default function SearchBar({ setUserData, setRepos }) {
   useEffect(() => {
     if (username) {
         fetchUserData(username)
-        .then((userData) => {
-          setUserData(userData);
-          setLocalUserData(userData);
-          return fetchUserRepos(userData.repos_url);
-        })
+useEffect(() => {
+    if (username) {
+        fetchUserData(username)
+            .then((userData) => {
+                setUserData(userData);
+                setLocalUserData(userData);
+                return fetchUserRepos(userData.repos_url);
+            })
         .then((repos) => {
           setRepos(repos);
         })
