@@ -21,7 +21,7 @@ export default function SearchBar({ setUserData, setRepos }) {
 
   useEffect(() => {
     if (username) {
-      const token = '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';
+      const token = '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';
       const userUrl = `https://api.github.com/users/${username}`;
 
       fetchUserData(userUrl, token)

@@ -8,7 +8,7 @@ import "./index.css";
 function App() {
     const [userData, setUserData] = useState(null);
     const [repos, setRepos] = useState([]);
-    const [username, setUsername] = useState("");
+    const [ setUsername] = useState("");
 
     return (
            <div className="App">
