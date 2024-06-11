@@ -34,22 +34,19 @@ export default function SearchBar({ setUserData, setRepos }) {
 
   useEffect(() => {
     if (username) {
-        fetchUserData(username)
-useEffect(() => {
-    if (username) {
-        fetchUserData(username)
-            .then((userData) => {
-                setUserData(userData);
-                setLocalUserData(userData);
-                return fetchUserRepos(userData.repos_url);
-            })
+      fetchUserData(username)
+        .then((userData) => {
+          setUserData(userData);
+          setLocalUserData(userData);
+          return fetchUserRepos(userData.repos_url);
+        })
         .then((repos) => {
           setRepos(repos);
         })
         .catch((error) => {
           console.error("Error fetching data:", error);
         });
-    } 
+    }
   }, [username, setUserData, setRepos]);
 
   const handleClick = () => {
