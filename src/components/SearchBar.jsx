@@ -1,13 +1,26 @@
 import React, { useEffect, useState } from "react";
 
 export default function SearchBar({ setUserData, setRepos }) {
-  const fetchUserData = async (url, token) => {
-    const response = await fetch(url, {
+  const fetchUserData = async (username) => {
+    const response = await fetch('/.netlify/functions/fetchUserData', {
+      method: 'POST',
       headers: {
-        Authorization: `token ${token}`
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ username })
+    });
+
+    const data = await response.json();
+    return data;
+  };
+
+  const fetchUserRepos = async (reposUrl) => {
+    const response = await fetch(reposUrl, {
+      headers: {
+        Authorization: `token ${process.env.GITHUB_TOKEN}` // Fetch the token from environment variables during build
       }
     });
-  
+
     const data = await response.json();
     return data;
   };
@@ -21,18 +34,18 @@ export default function SearchBar({ setUserData, setRepos }) {
 
   useEffect(() => {
     if (username) {
-      const token = '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';
-      const userUrl = `https://api.github.com/users/${username}`;
-
-      fetchUserData(userUrl, token)
+      fetchUserData(username)
         .then((userData) => {
           setUserData(userData);
           setLocalUserData(userData);
-          return fetchUserData(userData.repos_url, token);
+          return fetchUserRepos(userData.repos_url);
         })
         .then((repos) => {
           setRepos(repos);
         })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+        });
     } 
   }, [username, setUserData, setRepos]);
 
