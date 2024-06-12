@@ -11,29 +11,21 @@ export default function SearchBar({ setUserData, setRepos }) {
     });
 
     const data = await response.json();
-<<<<<<< HEAD
+    
     console.log("fetchUserData result", data); // Log the result
-=======
->>>>>>> ecefca0f0825ea2e1c6756edf72be3d9a68576ee
+    
     return data;
   };
 
   const fetchUserRepos = async (reposUrl) => {
     const response = await fetch(reposUrl, {
       headers: {
-<<<<<<< HEAD
-        Authorization: `token ${process.env.GITHUB_TOKEN}`
-=======
         Authorization: `token ${process.env.GITHUB_TOKEN}` // Fetch the token from environment variables during build
->>>>>>> ecefca0f0825ea2e1c6756edf72be3d9a68576ee
       }
     });
 
     const data = await response.json();
-<<<<<<< HEAD
     console.log("fetchUserRepos result", data); // Log the result
-=======
->>>>>>> ecefca0f0825ea2e1c6756edf72be3d9a68576ee
     return data;
   };
 
@@ -60,11 +52,7 @@ export default function SearchBar({ setUserData, setRepos }) {
         });
     }
   }, [username, setUserData, setRepos]);
-
-<<<<<<< HEAD
-
-=======
->>>>>>> ecefca0f0825ea2e1c6756edf72be3d9a68576ee
+  
   const handleClick = () => {
     setLocalUserData(null);
   };
