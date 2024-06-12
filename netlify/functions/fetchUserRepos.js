@@ -1,5 +1,3 @@
-import fetch from 'node-fetch';
-
 exports.handler = async function(event, context) {
   try {
     const token = process.env.GITHUB_TOKEN;
