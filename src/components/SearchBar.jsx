@@ -52,7 +52,6 @@ export default function SearchBar({ setUserData, setRepos }) {
         });
     }
   }, [username, setUserData, setRepos]);
-
   const handleClick = () => {
     setLocalUserData(null);
   };

@@ -1,7 +1,4 @@
 // functions/fetchUserData.js
-import('dotenv').config();
-const fetch = import('node-fetch');
-
 export async function handler(event, context) {
   console.log('Received event:', event);  // Log the event for debugging
   const token = process.env.GITHUB_TOKEN;
