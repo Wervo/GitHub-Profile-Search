@@ -11,17 +11,19 @@ export default function SearchBar({ setUserData, setRepos }) {
     });
 
     const data = await response.json();
+    console.log("fetchUserData result", data); // Log the result
     return data;
   };
 
   const fetchUserRepos = async (reposUrl) => {
     const response = await fetch(reposUrl, {
       headers: {
-        Authorization: `token ${process.env.GITHUB_TOKEN}` // Fetch the token from environment variables during build
+        Authorization: `token ${process.env.GITHUB_TOKEN}`
       }
     });
 
     const data = await response.json();
+    console.log("fetchUserRepos result", data); // Log the result
     return data;
   };
 
@@ -48,6 +50,7 @@ export default function SearchBar({ setUserData, setRepos }) {
         });
     }
   }, [username, setUserData, setRepos]);
+
 
   const handleClick = () => {
     setLocalUserData(null);
