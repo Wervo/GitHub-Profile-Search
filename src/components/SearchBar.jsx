@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 export default function SearchBar({ setUserData, setRepos }) {
   const fetchUserData = async (username) => {
-    const response = await fetch('/netlify/functions/fetchUserData', {
+    const response = await fetch('/.netlify/functions/fetchUserData', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -17,7 +17,7 @@ export default function SearchBar({ setUserData, setRepos }) {
   };
 
   const fetchUserRepos = async (reposUrl) => {
-    const response = await fetch('/netlify/functions/fetchUserRepos', {
+    const response = await fetch('/.netlify/functions/fetchUserRepos', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -47,14 +47,19 @@ export default function SearchBar({ setUserData, setRepos }) {
           return fetchUserRepos(userData.repos_url);
         })
         .then((repos) => {
-          setRepos(repos);
-          console.log("repos fetching:", repos)
+          console.log('Fetched repos:', repos); // Log repos
+          if (Array.isArray(repos)) {
+            setRepos(repos);
+          } else {
+            console.error('Expected repos to be an array', repos);
+          }
         })
         .catch((error) => {
           console.error("Error fetching data:", error);
         });
     }
   }, [username, setUserData, setRepos]);
+  
   const handleClick = () => {
     setLocalUserData(null);
   };

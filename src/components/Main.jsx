@@ -1,7 +1,10 @@
 import React from "react";
 
 export default function Main({ username, repos }) {
-  if (!repos || repos.length === 0) {
+  // Log repos to check its value
+  console.log('Repos:', repos);
+
+  if (!Array.isArray(repos) || repos.length === 0) {
     return (
       <div className="container-main">
         <div className="row-container">
