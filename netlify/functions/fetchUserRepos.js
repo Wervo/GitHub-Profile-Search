@@ -1,4 +1,6 @@
-export async function handler(event, context) {
+const fetch = require('node-fetch');
+
+exports.handler = async function(event, context) {
   try {
     console.log('Received event:', event);  // Log the event for debugging
 
@@ -38,4 +40,4 @@ export async function handler(event, context) {
       body: JSON.stringify({ error: 'Internal Server Error', message: error.message })
     };
   }
-}
+};
